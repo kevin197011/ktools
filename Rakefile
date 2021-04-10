@@ -1,5 +1,3 @@
-
-
 task :p do
   sh <<~EOH
     git add .
