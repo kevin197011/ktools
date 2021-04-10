@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'json'
+
+
+=begin
+ip-api check ip info command
+curl http://ip-api.com/json/24.48.0.1
+=end
+
+if ARGV.length != 1 || ARGV[0].match(/-h|--help/)
+    abort <<~EOH
+      Usage:
+          ip-api xxx.xxx.xxx.xxx(IP address)
+    EOH
+end
+
+if !ARGV[0].match(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/)
+  abort("\tIP format error!")
+end
+
+uri = URI("http://ip-api.com/json/#{ARGV[0]}")
+context = Net::HTTP.get(uri)
+
+puts JSON.pretty_generate(JSON.parse(context))
+
