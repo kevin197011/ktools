@@ -10,14 +10,16 @@ curl http://ip-api.com/json/24.48.0.1
 =end
 
 if ARGV.length != 1 || ARGV[0].match(/-h|--help/)
-  fail <<~EOH
+  puts <<~EOH
     Usage:
         ip-api xxx.xxx.xxx.xxx(IP address)
   EOH
+  exit
 end
 
 if !ARGV[0].match(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/)
-  fail("Error: IP format error!")
+  puts "Error: IP format error!"
+  exit
 end
 
 uri = URI("http://ip-api.com/json/#{ARGV[0]}")
