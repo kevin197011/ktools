@@ -7,10 +7,10 @@ require "net/http"
 require "json"
 
 if ARGV.length != 1 || ARGV[0].match(/-h|--help/)
-  puts <<~HEREDOC
+  puts <<-EOS.undent
     Usage:
         ip-api xxx.xxx.xxx.xxx(IP address)
-  HEREDOC
+  EOS
   exit(-1)
 end
 
