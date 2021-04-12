@@ -1,23 +1,20 @@
 #!/usr/bin/env ruby
 
-require 'net/http'
-require 'json'
+# ip-api check ip info command
+# curl http://ip-api.com/json/24.48.0.1
 
-
-=begin
-ip-api check ip info command
-curl http://ip-api.com/json/24.48.0.1
-=end
+require "net/http"
+require "json"
 
 if ARGV.length != 1 || ARGV[0].match(/-h|--help/)
-  puts <<~EOH
+  puts <<~HEREDOC
     Usage:
         ip-api xxx.xxx.xxx.xxx(IP address)
-  EOH
+  HEREDOC
   exit
 end
 
-if !ARGV[0].match(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/)
+unless /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.match?(ARGV[0])
   puts "Error: IP format error!"
   exit
 end
@@ -26,4 +23,3 @@ uri = URI("http://ip-api.com/json/#{ARGV[0]}")
 context = Net::HTTP.get(uri)
 
 puts JSON.pretty_generate(JSON.parse(context))
-
