@@ -7,7 +7,7 @@ require "net/http"
 require "json"
 
 if ARGV.length != 1 || ARGV[0].match(/-h|--help/)
-  puts <<-EOS.undent
+  puts <<~EOS
     Usage:
         ip-api xxx.xxx.xxx.xxx(IP address)
   EOS
