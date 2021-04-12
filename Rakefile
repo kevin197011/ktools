@@ -2,8 +2,8 @@ require "digest"
 require "json"
 require "standard/rake"
 
-# Set update app name
-app_name = "ip-api"
+# Setting update app name
+app_name = "fanyiweb"
 
 app_version = "v#{Time.new.strftime("%Y%m%d")}"
 
