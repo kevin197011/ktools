@@ -3,7 +3,7 @@ require "json"
 require "standard/rake"
 
 # Setting update app name
-app_name = "ip-api"
+app_name = "rate"
 
 app_version = "v#{Time.new.strftime("%Y%m%d")}"
 

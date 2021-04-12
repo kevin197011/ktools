@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+# exchange rate
+
+require "net/http"
+require "json"
+
+uri = URI("https://api.exchangerate-api.com/v4/latest/usd")
+context = Net::HTTP.get(uri)
+
+puts JSON.pretty_generate(JSON.parse(context))
