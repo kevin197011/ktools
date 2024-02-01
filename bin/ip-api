@@ -14,7 +14,7 @@ class IpApi
   end
 
   def run
-    exit 'Not a validation ip!' unless _validation?(@ip)
+    exit 'Not a valid ip!' unless _validation?(@ip)
     url = URI("http://ip-api.com/json/##{@ip}")
     http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Get.new(url)
