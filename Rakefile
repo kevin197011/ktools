@@ -1,6 +1,7 @@
-require "digest"
-require "json"
-require "standard/rake"
+require 'digest'
+require 'time'
+require 'json'
+require 'standard/rake'
 
 # Setting update app name
 app_name = "rate"
@@ -12,9 +13,9 @@ task :fmt do
 end
 
 task push: :fmt do
-  sh "git add ."
-  sh "git commit -m 'Update.'"
-  sh "git push origin main"
+  sh 'git add .'
+  sh "git commit -m 'Update #{Time.now}.'"
+  sh 'git push origin main'
 end
 
 task :package do
@@ -29,7 +30,7 @@ task :info do
   File.open("#{app_name}.json", "w") { |file| file.write(app_info.to_json) }
 end
 
-task :go do
+task :run do
   Rake::Task["package"].invoke
   Rake::Task["info"].invoke
 end

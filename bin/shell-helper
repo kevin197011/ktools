@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+class ShellHelper
+  attr_accessor :cmd
+
+  def initialize(cmd)
+    @cmd = cmd
+  end
+
+  def run
+    url = URI("https://cht.sh/#{@cmd}")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new(url)
+    response = http.request(request)
+    puts response.read_body
+  end
+end
+
+ShellHelper.new(ARGV[0]).run if __FILE__ == $0
