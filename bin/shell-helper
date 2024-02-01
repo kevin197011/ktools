@@ -5,6 +5,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
+# class
 class ShellHelper
   attr_accessor :cmd
 
