@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Usage: $0 _\.(.*) $1 #批量修改文件名去掉_.
+# class
+class Rename
+  attr_accessor :src_re
+  attr_accessor :dst_re
+  attr_accessor :current_dir
+
+  def initialize(src_re, dst_re)
+    @src_re = src_re
+    @dst_re = dst_re
+    @current_dir = Dir.pwd
+  end
+
+  def run
+    Dir.entries(@current_dir).each do |file|
+      next unless File.file? file
+      File.rename(file, @dst_re) if file =~ /#{@src_re}/
+    end
+  end
+end
+
+Rename.new(ARGV).run if __FILE__ == $0
