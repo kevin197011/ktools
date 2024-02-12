@@ -17,9 +17,9 @@ class Rename
   def run
     Dir.entries(@current_dir).each do |file|
       next unless File.file? file
-      File.rename(file, @dst_re) if file =~ /#{@src_re}/
+      File.rename(file, eval(@dst_re)) if file =~ /#{@src_re}/
     end
   end
 end
 
-Rename.new(ARGV).run if __FILE__ == $0
+Rename.new(ARGV[0], ARGV[1]).run if __FILE__ == $0
