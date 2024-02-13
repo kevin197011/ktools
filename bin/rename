@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Usage: $0 _\.(.*) $1 #批量修改文件名去掉_.
+# Usage: $0 '_\.(.*)' '$1' #批量修改文件名去掉_.
 # class
 class Rename
   attr_accessor :src_re
