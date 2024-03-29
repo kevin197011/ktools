@@ -8,9 +8,8 @@ require 'openssl'
 
 # class
 class USDRate
-
   def run
-    url = URI("https://api.exchangerate-api.com/v4/latest/usd")
+    url = URI('https://api.exchangerate-api.com/v4/latest/usd')
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -21,5 +20,4 @@ class USDRate
   end
 end
 
-USDRate.new.run if __FILE__ == $0
-
+USDRate.new.run if __FILE__ == $PROGRAM_NAME

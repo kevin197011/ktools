@@ -24,4 +24,4 @@ class ShellHelper
   end
 end
 
-ShellHelper.new(ARGV[0]).run if __FILE__ == $0
+ShellHelper.new(ARGV[0]).run if __FILE__ == $PROGRAM_NAME

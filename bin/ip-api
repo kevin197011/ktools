@@ -30,4 +30,4 @@ class IpApi
   end
 end
 
-IpApi.new(ARGV[0]).run if __FILE__ == $0
+IpApi.new(ARGV[0]).run if __FILE__ == $PROGRAM_NAME

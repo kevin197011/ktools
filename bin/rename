@@ -4,9 +4,7 @@
 # Usage: $0 '_\.(.*)' '$1' #批量修改文件名去掉_.
 # class
 class Rename
-  attr_accessor :src_re
-  attr_accessor :dst_re
-  attr_accessor :current_dir
+  attr_accessor :src_re, :dst_re, :current_dir
 
   def initialize(src_re, dst_re)
     @src_re = src_re
@@ -17,9 +15,10 @@ class Rename
   def run
     Dir.entries(@current_dir).each do |file|
       next unless File.file? file
+
       File.rename(file, eval(@dst_re)) if file =~ /#{@src_re}/
     end
   end
 end
 
-Rename.new(ARGV[0], ARGV[1]).run if __FILE__ == $0
+Rename.new(ARGV[0], ARGV[1]).run if __FILE__ == $PROGRAM_NAME
