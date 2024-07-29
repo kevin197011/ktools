@@ -1,2 +1,2 @@
-# ktools
-ktools
+# kscript
+kscript
